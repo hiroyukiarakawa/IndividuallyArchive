@@ -1,12 +1,14 @@
-'å€‹åˆ¥åœ§ç¸®
-'å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’åœ§ç¸®ã™ã‚‹ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¦å®Ÿè¡Œã™ã‚‹ã€‚
-'å€‹åˆ¥ãƒ•ã‚¡ã‚¤ãƒ«ã”ã¨ã«ã€WshShell.Runã‚’è¡Œã†ã¨çµæœã‚’å—ã‘å–ã‚‹ã®ã‚‚ä¸€è‹¦åŠ´ãªã®ã§ã€‚
+'ŒÂ•Êˆ³k
+'ˆø”‚Å“n‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğˆ³k‚·‚éƒoƒbƒ`ƒtƒ@ƒCƒ‹‚ğì¬‚µ‚ÄÀs‚·‚éB
+'ŒÂ•Êƒtƒ@ƒCƒ‹‚²‚Æ‚ÉAWshShell.Run‚ğs‚¤‚ÆŒ‹‰Ê‚ğó‚¯æ‚é‚Ì‚àˆê‹ê˜J‚È‚Ì‚ÅB
+'‚È‚ºA‘S•”ƒoƒbƒ`ƒtƒ@ƒCƒ‹‚Ås‚í‚È‚¢‚Ì‚©H@ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚Ìˆ—‚Å()‚ªg‚í‚ê‚½ƒtƒ@ƒCƒ‹–¼‚ªw’è‚³‚ê‚é‚ÆŒëì“®‚ğ‹N‚±‚·‚Ì‚ÅB
 
 Set WshShell = WScript.CreateObject("WScript.Shell")
 'https://docs.microsoft.com/ja-jp/office/vba/language/reference/user-interface-help/filesystemobject-object
 Set fso = CreateObject("Scripting.FileSystemObject")
 Set objArgs = Wscript.Arguments
 
+'ƒoƒbƒ`ƒtƒ@ƒCƒ‹–¼‚ğŒˆ‚ß‚éB
 MyFolder = fso.getParentFolderName(WScript.ScriptFullName)
 I = 0
 TempBatFile = MyFolder & "\temp" & I & ".bat"
@@ -14,18 +16,20 @@ Do While fso.FileExists(TempBatFile) = True
     I = I + 1
     TempBatFile = MyFolder & "\temp" & I & ".bat"
 Loop
-
+'ƒoƒbƒ`ƒtƒ@ƒCƒ‹‚ğì¬‚·‚é
 Set tso = fso.CreateTextFile(TempBatFile, true)
-
+'ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚Å“n‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğƒoƒbƒ`ƒtƒ@ƒCƒ‹‚É“o˜^‚·‚é
 For Each arg In objArgs
     'https://ginpro.winofsql.jp/article/267579611.html
-    cmdline = """C:\Program Files\7-Zip\7z.exe"" a " & arg  & ".7z " & arg
+    cmdline = """C:\Program Files\7-Zip\7z.exe"" a """ & arg  & ".7z"" """ & arg & """"
     ' Wscript.echo cmdline
     tso.WriteLine( cmdline )
 Next
 tso.WriteLine("PAUSE")
 tso.Close
 
+'ì¬‚µ‚½ƒoƒbƒ`ƒtƒ@ƒCƒ‹‚ğÀs‚·‚é
 Call WshShell.Run( TempBatFile , 1 , True )
 
+'ì¬‚µ‚½ƒoƒbƒ`ƒtƒ@ƒCƒ‹‚ğíœ‚·‚é
 fso.DeleteFile(TempBatFile)

@@ -3,17 +3,20 @@ Set ws = CreateObject("WScript.Shell")
 
 
 ' Dim rc As VbMsgBoxResult
-rc = MsgBox("Do you want to Uninstall IndividuallyArchive.vbs?", vbYesNo + vbQuestion)
+rc = MsgBox("個別圧縮を送るメニューから解除しますか？", vbYesNo + vbQuestion)
 If rc = vbNo Then
     WScript.Quit
 End If
 
 SendTo = ws.SpecialFolders("SendTo")
 
-shortcut = SendTo & "\IndividuallyArchive.lnk"
+shortcut = SendTo & "\個別圧縮.lnk"
 
-fso.DeleteFile(shortcut)
-
-MsgBox("Uninstalled")
+If fso.FileExists(shortcut) Then
+    fso.DeleteFile(shortcut)
+    rc = MsgBox("送るメニューから解除しました",vbInformation)
+Else
+    rc = MsgBox("個別圧縮が送るメニューに登録されていませんでした",vbInformation)
+End If
 
 

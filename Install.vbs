@@ -3,7 +3,7 @@ Set ws = CreateObject("WScript.Shell")
 
 
 ' Dim rc As VbMsgBoxResult
-rc = MsgBox("Do you want to create SHORTCUT at SendTo for IndividuallyArchive.vbs", vbYesNo + vbQuestion)
+rc = MsgBox("ŒÂ•Êˆ³k‚ð‘—‚éƒƒjƒ…[‚É“o˜^‚µ‚Ü‚·‚©H", vbYesNo + vbQuestion)
 If rc = vbNo Then
     WScript.Quit
 End If
@@ -12,12 +12,12 @@ SendTo = ws.SpecialFolders("SendTo")
 
 MyFolder = fso.getParentFolderName(WScript.ScriptFullName)
 
-' ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆä½œæˆ
-Set shortcut = ws.CreateShortcut(SendTo & "\IndividuallyArchive.lnk")
+' ƒVƒ‡[ƒgƒJƒbƒgì¬
+Set shortcut = ws.CreateShortcut(SendTo & "\ŒÂ•Êˆ³k.lnk")
 With shortcut
     .TargetPath = MyFolder & "\IndividuallyArchive.vbs"
     .WorkingDirectory = MyFolder
     .Save
 End With
 
-MsgBox("Installed")
+rc = MsgBox("‘—‚éƒƒjƒ…[‚É“o˜^‚µ‚Ü‚µ‚½", vbInformation)
