@@ -1,6 +1,11 @@
 Set fso = CreateObject("Scripting.FileSystemObject")
 Set ws = CreateObject("WScript.Shell")
+s7z = "C:\Program Files\7-Zip\7z.exe"
 
+If fso.FileExists(s7z) = False Then
+    rc = MsgBox(s7z & "‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ", vbInformation)
+    WScript.Quit
+End If
 
 ' Dim rc As VbMsgBoxResult
 rc = MsgBox("ŒÂ•Êˆ³k‚ğ‘—‚éƒƒjƒ…[‚É“o˜^‚µ‚Ü‚·‚©H", vbYesNo + vbQuestion)
