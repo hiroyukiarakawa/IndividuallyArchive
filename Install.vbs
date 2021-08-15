@@ -25,4 +25,12 @@ With shortcut
     .Save
 End With
 
+Set shortcut_del = ws.CreateShortcut(SendTo & "\ŒÂ•Êˆ³k(ˆ³kŒãíœ).lnk")
+With shortcut_del
+    .TargetPath = MyFolder & "\IndividuallyArchive_delete.vbs"
+    .WorkingDirectory = MyFolder
+    .Save
+End With
+
+
 rc = MsgBox("‘—‚éƒƒjƒ…[‚É“o˜^‚µ‚Ü‚µ‚½", vbInformation)
