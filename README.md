@@ -1,8 +1,30 @@
-# IndividuallyArchive
-選択したファイル/フォルダを１つの書庫ファイルに圧縮するのではなく、個別の書庫ファイルに圧縮したい場合に使うと便利です。
-圧縮に7zを使用します。
-7zのインストール先は、デフォルトの以下で決め打ちしていますので、別の場所にインストールしているのであればIndividuallyArchive.vbsの修正が必要です。
-C:\Program Files\7-Zip\7z.exe
+# 概要
+選択したファイル/フォルダを１つの書庫ファイルに圧縮するのではなく、個別の書庫ファイルに圧縮します。  
+圧縮に7zを使用します。  
+7zのインストール先は、  
+C:\Program Files\7-Zip\7z.exe  
+で決め打ちしていますので、別の場所にインストールしているのであれば、  
+IndividuallyArchive.vbs  
+IndividuallyArchive_delete.vbs  
+の修正が必要です。  
+
+# 使い方
+7zがC:\Program Files\7-Zip\にインストールされた状態で、  
+Install.vbsをダブルクリックすると"送る"フォルダに、  
+個別圧縮  
+個別圧縮(圧縮後削除)  
+というショートカットが作成されます。  
+
+圧縮したいファイルを選んで、右クリックしてポップアップメニュー表示→送る→個別圧縮を左クリックすると、  
+コマンドプロンプトの窓が表示され圧縮が行われます。  
+作業が完了すると「何かキーを押してください」と表示されますので、何かキーを押すと窓が閉じます。  
+圧縮した後、元のファイルが不要である場合は、  
+送るフォルダの「個別圧縮(圧縮後削除)」を使用してください。
+
+個別圧縮をアンインストールするには、Uninstall.vbsをダブルクリックしてください。  
+送るフォルダからショートカットが削除されます。  
+
+# 各ファイルについて
 
 ## Install.vbs
 実行すると"個別圧縮"のショートカットを送るメニューに作成します。
@@ -11,16 +33,20 @@ C:\Program Files\7-Zip\7z.exe
 実行すると送るメニューから"個別圧縮"のショートカットを削除します。
 
 ## IndividuallyArchive.vbs
-Install.vbsにより、送るフォルダにショートカットが作成されます。
-複数ファイルを選択して右クリック→送るフォルダの個別圧縮を選ぶと、
-選択したファイル毎に個別に圧縮した7z書庫ファイルが作成されます。
+Install.vbsにより、送るフォルダにショートカットが作成されます。  
+複数ファイルを選択して右クリック→送るフォルダの個別圧縮を選ぶと、  
+選択したファイル毎に個別に圧縮した7z書庫ファイルが作成されます。  
 
-例）
-C:\MyFolder\test1.txt
-C:\MyFolder\test2.txt
-C:\MyFolder\test3.txt
-を、個別圧縮に送ると、
-C:\MyFolder\test1.txt.7z
-C:\MyFolder\test2.txt.7z
-C:\MyFolder\test3.txt.7z
-という7z書庫を作成します。
+例）  
+C:\MyFolder\test1.txt  
+C:\MyFolder\test2.txt  
+C:\MyFolder\test3.txt  
+を、個別圧縮に送ると、  
+C:\MyFolder\test1.txt.7z  
+C:\MyFolder\test2.txt.7z  
+C:\MyFolder\test3.txt.7z  
+という7z書庫を作成します。  
+
+## IndividuallyArchive_delete.vbs
+圧縮後に元のファイルを削除するバージョン。
+
